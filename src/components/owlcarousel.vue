@@ -42,7 +42,7 @@ export default {
     console.log(parent)
 
     while(parent !== undefined) {
-      if (parent.$vnode && parent.$vnode.tag === 'vue-component-2-VjsOwlCarousel') {
+      if (parent.$vnode && parent.$vnode.tag.indexOf('VjsOwlCarousel') >= 0) {
         delay += 1
       }
       parent = parent.$parent
