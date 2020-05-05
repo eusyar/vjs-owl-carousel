@@ -30,14 +30,23 @@ The instance of owl carousel is avaliable in the variable `instance`.
       <owl-carousel id="id" v-bind="options" ref="owl">
         <template v-slot:nav>
           <div style="margin: 25px 0px;">
-            <button @click="$refs.owl.prev()">Prev figure</button>
-            <button @click="$refs.owl.next()">Next figure</button>
+            <button @click="$refs.owl.prev()">Prev figure</button> 
+            <button @click="$refs.owl.next()">Next figure</button> 
           </div>
         </template>
+
         <img src="https://placeimg.com/200/200/any?1">
         <img src="https://placeimg.com/200/200/any?2">
         <img src="https://placeimg.com/200/200/any?3">
         <img src="https://placeimg.com/200/200/any?4">
+        <div >
+            <owl-carousel id="idd" ref="ow">
+              <img src="https://placeimg.com/200/200/any?1">
+              <img src="https://placeimg.com/200/200/any?2">
+              <img src="https://placeimg.com/200/200/any?3">
+              <img src="https://placeimg.com/200/200/any?4">
+            </owl-carousel>
+        </div>
       </owl-carousel>
     </center>
   </div>

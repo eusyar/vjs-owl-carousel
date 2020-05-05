@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    Exemple app.
+    Exemple app.. is equals ? {{isEquals}}
     <!--
       You could set the options one by one:
         <owl-carousel id="asdf" :dots="true">
@@ -16,10 +16,19 @@
             <button @click="$refs.owl.next()">Next figure</button> 
           </div>
         </template>
+
         <img src="https://placeimg.com/200/200/any?1">
         <img src="https://placeimg.com/200/200/any?2">
         <img src="https://placeimg.com/200/200/any?3">
         <img src="https://placeimg.com/200/200/any?4">
+        <div >
+            <owl-carousel id="idd" ref="ow">
+              <img src="https://placeimg.com/200/200/any?1">
+              <img src="https://placeimg.com/200/200/any?2">
+              <img src="https://placeimg.com/200/200/any?3">
+              <img src="https://placeimg.com/200/200/any?4">
+            </owl-carousel>
+        </div>
       </owl-carousel>
     </center>
   </div>
@@ -34,9 +43,25 @@ export default {
     return {
       options: {
         dots: true,
-        nav: false,
+        nav: true,
         items: 1 
       }
+    }
+  },
+  computed: {
+    isEquals () {
+      if (this.$refs.owl === undefined) {
+        console.log('OWL undefined')
+        return false
+      }
+
+      if (this.$refs.ow === undefined) {
+        console.log('OW undefined')
+        return false
+      }
+
+      return true
+      // return this.$refs.owl.instance === this.$refs.ow.instance
     }
   },
   components: {

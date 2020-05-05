@@ -2,7 +2,7 @@
   <div>
     <slot name="nav"></slot>
     <div :id="id" :class="['owl-carousel', 'owl-theme']"  >
-      <slot/>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -30,27 +30,36 @@ export default {
       type: String,
       required: true
     },
-    navAutoHide: {
-      type: Boolean,
-      default: true
-    },
     ...options
   },
   methods: {
     ...methods
   },
   mounted () {
-    var owlOptions = {...this._props}
-    delete owlOptions.id
-    delete owlOptions.navAutoHide
+    let delay = 0
+    let parent = this.$parent
 
-    this.instance = $(`#${this.id}`).owlCarousel(owlOptions)
+    console.log(parent)
 
-    events.map(x => this.instance.on(`${x}.owl.carousel`, e => this.$emit(x, e)))
+    while(parent !== undefined) {
+      if (parent.$vnode && parent.$vnode.tag === 'vue-component-2-VjsOwlCarousel') {
+        delay += 1
+      }
+      parent = parent.$parent
+    }
+
+    console.log(`${this.id} - ${delay}`)
+
+    setTimeout(() => {
+      let owlOptions = {...this._props}
+      delete owlOptions.id
+      delete owlOptions.stopss
+
+      this.instance = $(`#${this.id}`).owlCarousel(owlOptions)
+
+      events.map(x => this.instance.on(`${x}.owl.carousel`, e => this.$emit(x, e)))
+    }, delay * 1000)
+
   }
 }
-  
 </script>
-
-<style>
-</style>
