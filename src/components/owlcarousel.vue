@@ -39,16 +39,12 @@ export default {
     let delay = 0
     let parent = this.$parent
 
-    console.log(parent)
-
     while(parent !== undefined) {
       if (parent.$vnode && parent.$vnode.tag.indexOf('VjsOwlCarousel') >= 0) {
         delay += 1
       }
       parent = parent.$parent
     }
-
-    console.log(`${this.id} - ${delay}`)
 
     setTimeout(() => {
       let owlOptions = {...this._props}
